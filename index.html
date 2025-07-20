@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>이미지 기반 주관식 퀴즈</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>이미지 퀴즈</h1>
+    <div id="quiz">
+      <div id="timer">시간: 0분 0초</div>
+      <img id="question-image" src="" alt="문제 이미지" />
+      <input type="text" id="answer-input" placeholder="정답을 입력하세요" autocomplete="off" />
+      <button id="submit-btn">제출</button>
+      <p id="feedback"></p>
+    </div>
+
+    <div id="result" class="hidden">
+      <h2>퀴즈 완료!</h2>
+      <p id="score"></p>
+      <button id="restart-btn">다시하기</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
