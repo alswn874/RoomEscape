@@ -1,9 +1,9 @@
 
 
 const quizData = [
-    { image: "images/q1.png", answer: "html" },
-    { image: "images/q2.png", answer: "css" },
-    { image: "images/q3.png", answer: "javascript" }
+    { image: "images/q1.png", answer: "q1" },
+    { image: "images/q2.png", answer: "q2" },
+    { image: "images/q3.png", answer: "q3" }
   ];
   
   let currentQuestion = 0;
