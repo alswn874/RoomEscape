@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>문제 코드 입력</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f4f8;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 90%;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      font-size: 2rem;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      letter-spacing: 0.4rem;
+    }
+
+    input[type="text"]:focus {
+      border-color: #3b82f6;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2563eb;
+    }
+
+    #timer {
+      font-weight: bold;
+      margin-bottom: 15px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    #feedback {
+      color: red;
+      height: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>문제 코드를 입력하세요</h1>
+    <form id="codeForm">
+      <div id="timer">시간: 0분 0초</div>
+      <input 
+        type="text" 
+        id="codeInput" 
+        name="code" 
+        maxlength="4" 
+        pattern="\d{4}" 
+        placeholder="예: 1234" 
+        required 
+      />
+      <p id="feedback"></p>
+      <button type="submit">입력</button>
+    </form>
+  </div>
+
+  <script>
+    const timerEl = document.getElementById('timer');
+    const startTimeKey = 'startTime';
+    const feedbackEl = document.getElementById('feedback');
+    const codeForm = document.getElementById('codeForm');
+    const codeInput = document.getElementById('codeInput');
+    let timerInterval;
+
+    localStorage.removeItem('startTime'); // 타이머 초기화 (첫 시작 시)
+
+    function startTimer() {
+      let storedStart = localStorage.getItem(startTimeKey);
+      let startTime = storedStart ? parseInt(storedStart, 10) : Date.now();
+
+      if (!storedStart) {
+        localStorage.setItem(startTimeKey, startTime);
+      }
+
+      timerInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const totalSeconds = Math.floor(elapsed / 1000);
+        const minutes = Math.floor(totalSeconds / 60);
+        const seconds = totalSeconds % 60;
+        timerEl.textContent = `시간: ${minutes}분 ${seconds}초`;
+      }, 1000);
+    }
+
+    window.addEventListener('DOMContentLoaded', startTimer);
+
+    codeForm.addEventListener('submit', (e) => {
+      e.preventDefault(); // 기본 제출 방지
+      const enteredCode = codeInput.value.trim();
+
+      if (enteredCode === '1111') {
+        clearInterval(timerInterval);
+        window.location.href = 'index.html';
+      } else {
+        feedbackEl.textContent = "잘못된 문제 코드입니다. 다시 입력하세요.";
+      }
+    });
+  </script>
+</body>
+</html>

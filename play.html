@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>전체 화면 유튜브 영상</title>
+  <style>
+    /* body, html이 꽉 찬 화면으로 */
+    html, body {
+      margin: 0; padding: 0; height: 100%; overflow: hidden;
+      background: black;
+    }
+    /* 플레이어 div가 화면 전체 */
+    #player {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      background: black;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="player"></div>
+
+  <script>
+    // 1. 유튜브 iframe API 로드
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    let player;
+
+    // 2. API 준비되면 호출
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        videoId: '-jJEGa0WcDQ',
+        playerVars: {
+          autoplay: 1,
+          mute: 1,
+          controls: 1,
+          modestbranding: 1,
+          rel: 0,
+          showinfo: 0,
+          fs: 1
+        },
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    // 3. 영상 종료 감지
+    function onPlayerStateChange(event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        // 영상 끝나면 quiz.html로 이동
+        window.location.href = "index.html";
+      }
+    }
+
+    // 화면 크기 변경 시 플레이어 크기도 맞춤
+    window.addEventListener('resize', () => {
+      if(player) {
+        player.setSize(window.innerWidth, window.innerHeight);
+      }
+    });
+  </script>
+</body>
+</html>
