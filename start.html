@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>Start Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2025 청소년3부 방탈출: 홀리와트</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Harry+P&display=swap" /> -->
 </head>
 <body>
-  <h1>홀리와트에 오신 여러분을 환영합니다!</h1>
-  <div id="timer">시간: 0분 0초</div> <!-- 타이머가 표시될 영역 -->
-  <button onclick="location.href='code_input.html'">시작하기</button>
+  <div id="start-section" class="section active">
+    <div class="bg-1"></div>    
+    <div id="start-timer">00:00:00</div>
+    <!-- <p id="feedback"></p> -->
+    <button id="start-btn">start</button>
+  </div>
+
+  <div id="code-section" class="section">
+    <div id="code-timer">00:00:00</div>
+    <div class="container">
+        <h1>문제 A1의 정답을 입력하세요.</h1>
+        <form id="codeForm">
+          <input 
+            type="text" 
+            id="codeInput" 
+            name="code" 
+            maxlength="4" 
+            pattern="\d{4}" 
+            placeholder="예: 1234" 
+            required 
+          />
+          <p id="feedback"></p>
+          <button type="submit">입력</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="image-section" class="section">
+      <div id="image-timer">00:00:00</div>
+      <img id="question-image" src=""/>
+      <img id="undo" src="imgs/undo.png">
+      <img id="redo" src="imgs/redo.png">
+    </div>
+  
+  <script src="script.js"></script>
 </body>
 </html>
-
