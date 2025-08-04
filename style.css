@@ -1,55 +1,281 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .quiz-container {
-    background: white;
-    padding: 100px 200px;
-    border-radius: 10px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    width: 600px;
-    max-width: 100%;
-    text-align: center;
-  }
-  
-  #question-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  #answer-input {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+    background: #FFFFFF;
+    overflow: hidden;
+    background-image: url("imgs/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   
-  button {
-    padding: 10px 15px;
-    font-size: 16px;
-    cursor: pointer;
+  .section {
+    display: none;
+    /* width: 100vw;
+    height: 100vh;*/
+    position: relative; 
   }
   
+  .section.active {
+    display: block;
+  }
+
   .hidden {
     display: none;
   }
+
+  /* start-section */
+  .bg-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('imgs/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+ 
+  @font-face {
+    font-family: 'HarryP';
+    src: url('HarryP.ttf') format('truetype');
+  }
   
+ #start-timer{
+    position: absolute; /*absolute*/
+    /* width: 797px;
+    height: 171px;
+    left: 50%;
+    top: 100%; */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 0%);
+
+    font-family: 'HarryP', serif;
+    font-style: bold;
+    /* font-weight: 400; */
+    font-size: 70px;
+    /* line-height: 171px; */
+    /* identical to box height */
+
+    color: #FFFFFF;
+
+    text-shadow: 3px 4px 8.8px rgba(0, 0, 0, 0.37);
+
+ }
+
+ #code-timer{
+  position: absolute; /*absolute*/
+  /* width: 797px;
+  height: 171px;
+  left: 50%;
+  top: 100%; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, 0%);
+
+  font-family: 'HarryP', serif;
+  font-style: bold;
+  /* font-weight: 400; */
+  font-size: 70px;
+  /* line-height: 171px; */
+  /* identical to box height */
+
+  color: #FFFFFF;
+
+  text-shadow: 3px 4px 8.8px rgba(0, 0, 0, 0.37);
+
+}
+
+ #start-btn {
+    position: fixed;
+    font-size: 1.2em;
+    width: 250px;
+    height: 50px;
+    left: 50%;
+    bottom: 40px;
+    font-family: 'HarryP';
+    font-size: 40px;
+    transform: translateX(-50%);
+    background-color: #E3AD4A;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 36.5px;
+    cursor: pointer;
+  }
+
+  #start-btn:hover {
+    background-color: #ff8c00;
+  }
+
+
+  /* code_section */
+  .container {
+    position: fixed;
+    width: 650px;
+    height: 420px;
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+
+    background: #FFFFFF;
+    border-radius: 13px;
+    z-index: -1;
+
+  }
+
+  h1 {
+    position: absolute;
+    width: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-size: 30px;
+    line-height: 58px;
+    text-align: center;
+
+    color: #000000;
+    z-index: 1;
+  }
+
+  input[type="text"] {
+    position: absolute;
+    width: 400.04px;
+    height: 50.27px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    font-family: 'Inter';
+    font-style: normal;
+    letter-spacing: 0.5rem;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 58px;
+    text-align: center;
+
+    color: #000000;
+    border: 2px solid #D9D9D9;
+    border-radius: 6px;
+    z-index: 1;
+    /* font-size: 2rem;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    letter-spacing: 0.4rem; */
+  }
+
+  input[type="text"]:focus {
+    border-color: #3b82f6;
+  }
+
+  button {
+    position: absolute;
+    /* margin-top: 20px; */
+    padding: 12px 20px;
+    width: 130px;
+    height: 100x;
+    font-size: 25px;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, -50%);
+  }
+
+  button:hover {
+    background-color: #2563eb;
+  }
+
   #feedback {
+    position: absolute;
+    left: 50%;
+    bottom: 20%;
+    transform: translate(-50%, -50%);
     color: red;
     height: 1.5em;
     margin-bottom: 10px;
   }
-  
-  #timer {
-    font-weight: bold;
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #333;
-  }
-  
+
+
+    /* quiz_section */
+    #image-timer{
+      position: absolute; /*absolute*/
+      /* width: 797px;
+      height: 171px;
+      left: 50%;
+      top: 100%; */
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, 0%);
+    
+      font-family: 'HarryP', serif;
+      font-style: bold;
+      /* font-weight: 400; */
+      font-size: 70px;
+      /* line-height: 171px; */
+      /* identical to box height */
+    
+      color: #FFFFFF;
+    
+      text-shadow: 3px 4px 8.8px rgba(0, 0, 0, 0.37);
+    
+    }
+
+    #question-image {
+      position: absolute;
+      top: 0px;
+      left: 50%;
+      transform: translate(-50%, 15%);
+      height: 600px;
+      width: auto;
+      /* margin-bottom: 10px; */
+    }
+    
+    #undo {
+      /* position: absolute;
+      left: 0;
+      top: 1000%;
+      transform: translate(10%, 900%);
+      height: 50px;
+      width: 50px;
+      margin-bottom: 10px;
+      cursor: pointer; */
+      position: fixed;
+      left: 20px;          /* 왼쪽 여백 */
+      bottom: 20px;        /* 아래 여백 */
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+    }
+    
+    #redo {
+      /* position: absolute;
+      right: 0;
+      top: 1000%;
+      transform: translate(-10%, 900%);
+      height: 50px;
+      width: 50px;
+      margin-bottom: 10px;
+      cursor: pointer; */
+      position: fixed;
+      right: 20px;         /* 오른쪽 여백 */
+      bottom: 20px;        /* 아래 여백 */
+      height: 50px;
+      width: 50px;
+      cursor: pointer;
+    }
+    
